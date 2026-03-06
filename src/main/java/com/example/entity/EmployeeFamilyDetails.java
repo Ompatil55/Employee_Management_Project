@@ -14,33 +14,37 @@ public class EmployeeFamilyDetails {
 
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long familyId;
+	    private Long Id;
 
 	    private String memberName;
+	    
 	    private String relation;
 
 	    @ManyToOne
-	    @JoinColumn(name="employee_id")
+	    @JoinColumn(name = "employee_id")
 	    private Employee employee;
 
-		public EmployeeFamilyDetails(Long familyId, String memberName, String relation, Employee employee) {
+		public EmployeeFamilyDetails(Long id, String memberName, String relation, Employee employee) {
 			super();
-			this.familyId = familyId;
+			Id = id;
 			this.memberName = memberName;
 			this.relation = relation;
 			this.employee = employee;
 		}
 
+		
 		public EmployeeFamilyDetails() {
 			super();
 		}
 
-		public Long getFamilyId() {
-			return familyId;
+		
+		
+		public Long getId() {
+			return Id;
 		}
 
-		public void setFamilyId(Long familyId) {
-			this.familyId = familyId;
+		public void setId(Long id) {
+			Id = id;
 		}
 
 		public String getMemberName() {
@@ -66,12 +70,7 @@ public class EmployeeFamilyDetails {
 		public void setEmployee(Employee employee) {
 			this.employee = employee;
 		}
-
-		@Override
-		public String toString() {
-			return "EmployeeFamilyDetails [familyId=" + familyId + ", memberName=" + memberName + ", relation="
-					+ relation + ", employee=" + employee + "]";
-		}
+	    
 	    
 	    
 }

@@ -16,28 +16,37 @@ public class EmployeeSalaryService {
 	private SalaryRepository salaryRepository;
 
 
-	public EmployeeSalary saveEmployee(EmployeeSalary salary) {
+	public EmployeeSalary saveSalary(EmployeeSalary salary) {
 		
 		return salaryRepository.save(salary);
 	}
 
+	
 	  public List<EmployeeSalary> getAllSalaries() {
 	        return salaryRepository.findAll();
 	   }
 
+	  
 	  public EmployeeSalary getSalaryById(Long id) {
 	
 		return salaryRepository.findById(id).orElse(null);
 	  }
 
+	  
 	  public EmployeeSalary updateSalary(Long id, EmployeeSalary salary) {
 		  EmployeeSalary e = salaryRepository.findById(id).orElse(null);
 			
-		  e.setSalary(salary.getSalary());
+		  if(e != null) {
+			  e.setSalary(salary.getSalary());
+			  e.setBouns(salary.getBouns());
+			  
+			  return salaryRepository.save(e);
+		  }
 		  
-		return e;
+		return null;
 	  }
 
+	  
 	  public void deleteSalary(Long id) {
 		
 		  salaryRepository.deleteById(id);

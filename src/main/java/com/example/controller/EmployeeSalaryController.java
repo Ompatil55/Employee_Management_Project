@@ -21,37 +21,38 @@ import com.example.service.EmployeeSalaryService;
 public class EmployeeSalaryController {
 
 	@Autowired
-	private EmployeeSalaryService employeeSalaryService;
+	private EmployeeSalaryService salaryService;
 	
 	//Create salary
 	@PostMapping
 	public EmployeeSalary saveSalary(@RequestBody EmployeeSalary salary) {
-		return employeeSalaryService.saveEmployee(salary);
+		return salaryService.saveSalary(salary);
 	}
 	
 	//get all salaries 
 	  @GetMapping
 	    public List<EmployeeSalary> getAllSalaries() {
-	        return employeeSalaryService.getAllSalaries();
+	        return salaryService.getAllSalaries();
 	    }
 	  
 	  //get salaries by Id
 	  @GetMapping("/{id}")
 	  public EmployeeSalary getSalary(@PathVariable Long id) {
-		  return employeeSalaryService.getSalaryById(id);
+		  return salaryService.getSalaryById(id);
 	  }
 	  
 	  
 	  // Update Salary
 	    @PutMapping("/{id}")
 	    public EmployeeSalary updateSalary(@PathVariable Long id, @RequestBody EmployeeSalary salary) {
-	        return employeeSalaryService.updateSalary(id, salary);
+	        return salaryService.updateSalary(id, salary);
 	    }
 
+	    
 	    // Delete Salary
 	    @DeleteMapping("/{id}")
 	    public String deleteSalary(@PathVariable Long id) {
-	        employeeSalaryService.deleteSalary(id);
+	        salaryService.deleteSalary(id);
 	        return "Salary deleted successfully";
 	    }
 
