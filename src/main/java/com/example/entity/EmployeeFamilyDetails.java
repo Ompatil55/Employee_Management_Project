@@ -1,5 +1,8 @@
 package com.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +17,7 @@ public class EmployeeFamilyDetails {
 
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long Id;
+	    private Long id;
 
 	    private String memberName;
 	    
@@ -22,11 +25,12 @@ public class EmployeeFamilyDetails {
 
 	    @ManyToOne
 	    @JoinColumn(name = "employee_id")
+	    @JsonIgnore
 	    private Employee employee;
 
 		public EmployeeFamilyDetails(Long id, String memberName, String relation, Employee employee) {
 			super();
-			Id = id;
+			id = id;
 			this.memberName = memberName;
 			this.relation = relation;
 			this.employee = employee;
@@ -40,11 +44,11 @@ public class EmployeeFamilyDetails {
 		
 		
 		public Long getId() {
-			return Id;
+			return id;
 		}
 
 		public void setId(Long id) {
-			Id = id;
+			id = id;
 		}
 
 		public String getMemberName() {

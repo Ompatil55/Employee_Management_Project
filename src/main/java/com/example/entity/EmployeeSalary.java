@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,21 +18,22 @@ public class EmployeeSalary {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
-	    private double salary;
+	    private Double salary;
 	    
-	    private double bouns;
+	    private Double bonus;
 
 	    
 	    @OneToOne
 	    @JoinColumn(name = "employee_id")
+	    @JsonIgnore
 	    private Employee employee;
 
 
-		public EmployeeSalary(Long id, double salary, double bouns, Employee employee) {
+		public EmployeeSalary(Long id, Double salary, Double bonus, Employee employee) {
 			super();
 			this.id = id;
 			this.salary = salary;
-			this.bouns = bouns;
+			this.bonus = bonus;
 			this.employee = employee;
 		}
 
@@ -55,18 +58,18 @@ public class EmployeeSalary {
 		}
 
 
-		public void setSalary(double salary) {
+		public void setSalary(Double salary) {
 			this.salary = salary;
 		}
 
 
-		public double getBouns() {
-			return bouns;
+		public double getBonus() {
+			return bonus;
 		}
 
 
-		public void setBouns(double bouns) {
-			this.bouns = bouns;
+		public void setBonus(Double bonus) {
+			this.bonus = bonus;
 		}
 
 

@@ -17,7 +17,7 @@ import com.example.entity.Employee;
 import com.example.service.EmployeeService;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/employees")
 public class EmployeeController {
 
 	@Autowired
@@ -30,8 +30,8 @@ public class EmployeeController {
 	//Create Employee
 	@PostMapping()
 	public Employee createEmployee(@RequestBody Employee employee) {
-		Employee e = employeeService.saveEmployee(employee);
-		return e;
+		return employeeService.saveEmployee(employee);
+		
 	}
 	
 	//Get All Employee

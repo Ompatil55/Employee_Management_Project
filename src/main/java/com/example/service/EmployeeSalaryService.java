@@ -38,7 +38,7 @@ public class EmployeeSalaryService {
 			
 		  if(e != null) {
 			  e.setSalary(salary.getSalary());
-			  e.setBouns(salary.getBouns());
+			  e.setBonus(salary.getBonus());
 			  
 			  return salaryRepository.save(e);
 		  }

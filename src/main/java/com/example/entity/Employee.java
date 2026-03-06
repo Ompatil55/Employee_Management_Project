@@ -2,6 +2,9 @@ package com.example.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,10 +29,12 @@ public class Employee {
 	
 	//One employee have one salary
     @OneToOne(mappedBy="employee")
+//    @JsonIgnore
 	    private EmployeeSalary salary;
   
     //one employee have multiple family member
     @OneToMany(mappedBy="employee")
+//    @JsonIgnore
     private List<EmployeeFamilyDetails> familyDetails;
     
     
