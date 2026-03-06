@@ -20,29 +20,40 @@ public class Employee {
 	
 	private String name;
 	
-	private String email;
     private String department;
 
+	private String email;
+	
+	//One employee have one salary
+    @OneToOne(mappedBy="employee")
+	    private EmployeeSalary salary;
+  
+    //one employee have multiple family member
     @OneToMany(mappedBy="employee")
     private List<EmployeeFamilyDetails> familyDetails;
+    
+    
+    
+    
 
-    @OneToOne(mappedBy="employee")
-    private EmployeeSalary salary;
-
-	public Employee(Long id, String name, String email, String department, List<EmployeeFamilyDetails> familyDetails,
-			EmployeeSalary salary) {
+	public Employee(Long id, String name, String department, String email, EmployeeSalary salary,
+			List<EmployeeFamilyDetails> familyDetails) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.email = email;
 		this.department = department;
-		this.familyDetails = familyDetails;
+		this.email = email;
 		this.salary = salary;
+		this.familyDetails = familyDetails;
 	}
+	
+	
 
 	public Employee() {
 		super();
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -60,14 +71,6 @@ public class Employee {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getDepartment() {
 		return department;
 	}
@@ -76,12 +79,12 @@ public class Employee {
 		this.department = department;
 	}
 
-	public List<EmployeeFamilyDetails> getFamilyDetails() {
-		return familyDetails;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setFamilyDetails(List<EmployeeFamilyDetails> familyDetails) {
-		this.familyDetails = familyDetails;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public EmployeeSalary getSalary() {
@@ -92,13 +95,16 @@ public class Employee {
 		this.salary = salary;
 	}
 
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", email=" + email + ", department=" + department
-				+ ", familyDetails=" + familyDetails + ", salary=" + salary + "]";
+	public List<EmployeeFamilyDetails> getFamilyDetails() {
+		return familyDetails;
 	}
 
-
+	public void setFamilyDetails(List<EmployeeFamilyDetails> familyDetails) {
+		this.familyDetails = familyDetails;
 	}
+
+  
+
+}
     
    

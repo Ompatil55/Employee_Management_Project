@@ -22,4 +22,56 @@ public class EmployeeFamilyDetails {
 	    @ManyToOne
 	    @JoinColumn(name="employee_id")
 	    private Employee employee;
+
+		public EmployeeFamilyDetails(Long familyId, String memberName, String relation, Employee employee) {
+			super();
+			this.familyId = familyId;
+			this.memberName = memberName;
+			this.relation = relation;
+			this.employee = employee;
+		}
+
+		public EmployeeFamilyDetails() {
+			super();
+		}
+
+		public Long getFamilyId() {
+			return familyId;
+		}
+
+		public void setFamilyId(Long familyId) {
+			this.familyId = familyId;
+		}
+
+		public String getMemberName() {
+			return memberName;
+		}
+
+		public void setMemberName(String memberName) {
+			this.memberName = memberName;
+		}
+
+		public String getRelation() {
+			return relation;
+		}
+
+		public void setRelation(String relation) {
+			this.relation = relation;
+		}
+
+		public Employee getEmployee() {
+			return employee;
+		}
+
+		public void setEmployee(Employee employee) {
+			this.employee = employee;
+		}
+
+		@Override
+		public String toString() {
+			return "EmployeeFamilyDetails [familyId=" + familyId + ", memberName=" + memberName + ", relation="
+					+ relation + ", employee=" + employee + "]";
+		}
+	    
+	    
 }
